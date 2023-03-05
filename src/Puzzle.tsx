@@ -1,6 +1,6 @@
-import React from "react"
-import Square from "./Square"
-import sudoku from "./Sudoku"
+import React from 'react'
+import Square from './Square'
+import sudoku from './Sudoku'
 
 export default class Puzzle extends React.Component<any, any> {
     constructor(props: any) {
@@ -55,10 +55,12 @@ export default class Puzzle extends React.Component<any, any> {
         }
 
         return (
-            <form onSubmit={this.handleSubmit}>
-                {puzzle}
-                <input type="submit" value="Solve" />
-            </form>
+            <div className='col'>
+                <form onSubmit={this.handleSubmit}>
+                    {puzzle}
+                    <input className='mt-5 btn btn-primary' type='submit' value='Solve' />
+                </form>
+            </div>
         )
     }
 }

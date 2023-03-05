@@ -1,4 +1,9 @@
-import React from "react"
+import React from 'react'
+
+const inputStyle = {
+    width: '2rem',
+    height: '2rem',
+};
 
 export default class Square extends React.Component<any, any> {
     constructor(props: any) {
@@ -16,6 +21,6 @@ export default class Square extends React.Component<any, any> {
             val = ''
         }
 
-        return <input type="text" className="square" value={val} onChange={this.handleChange} />
+        return <input style={inputStyle} type='text' value={val} onChange={this.handleChange} />
     }
 }
