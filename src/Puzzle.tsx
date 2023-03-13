@@ -16,7 +16,8 @@ export default class Puzzle extends React.Component<any, any> {
                 [0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,0,0,0,0],
-            ]
+            ],
+            error: '',
         }
 
         this.onInputChange = this.onInputChange.bind(this)
@@ -40,8 +41,14 @@ export default class Puzzle extends React.Component<any, any> {
     handleSubmit(event: any) {
         event.preventDefault()
         const board = this.state.value
-        sudoku(board)
-        this.setState({value: board})
+        if (sudoku(board)) {
+            this.setState({
+                value: board,
+                error: '',
+            })
+        } else {
+            this.setState({error: "Please provide valid clues!"})
+        }
     }
 
     render() {
@@ -59,6 +66,7 @@ export default class Puzzle extends React.Component<any, any> {
                 <form onSubmit={this.handleSubmit}>
                     {puzzle}
                     <input className='mt-5 btn btn-primary' type='submit' value='Solve' />
+                    <p className='text-danger mb-0'>{ this.state.error }</p>
                 </form>
             </div>
         )

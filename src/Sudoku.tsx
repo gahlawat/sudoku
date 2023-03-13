@@ -2,7 +2,7 @@ const rows = new Array(9)
 const columns = new Array(9)
 const squares = new Array(9)
 
-export default function sudoku(board: number[][]): void {
+export default function sudoku(board: number[][]): boolean {
   for (let i = 0; i < 9; i++) {
     rows[i] = new Set()
     columns[i] = new Set()
@@ -13,14 +13,18 @@ export default function sudoku(board: number[][]): void {
       for (let j = 0; j < 9; j++) {
           let val = board[i][j];
           if (val) {
-              rows[i].add(val)
-              columns[j].add(val)
-              squares[getIndex(i, j)].add(val)
+            if (! isValid(i, j, val)) {
+                return false
+            }
+
+            rows[i].add(val)
+            columns[j].add(val)
+            squares[getIndex(i, j)].add(val)
           }
       }
   }
 
-  solve(0, 0, board)
+  return solve(0, 0, board)
 }
 
 function solve(row: number, col: number, board: number[][]): boolean {
