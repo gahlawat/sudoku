@@ -6,17 +6,7 @@ export default class Puzzle extends React.Component<any, any> {
     constructor(props: any) {
         super(props)
         this.state = {
-            value: [
-                [0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0],
-            ],
+            value: [...Array(9)].map(() => Array(9).fill(0)),
             error: '',
         }
 
